@@ -2,7 +2,7 @@ import _ from 'lodash';
 import passport from 'passport';
 import { Router } from 'express';
 
-import { AUTH_PROVIDERS, authCallback, endSession } from '../../utils/';
+import { AUTH_PROVIDERS, authCallback, endSession } from '../../utils';
 
 const router = Router(),
 	addSocketIDtoSession = (req, res, next) => {
