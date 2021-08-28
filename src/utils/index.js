@@ -4,8 +4,7 @@ export { CONSOLE_SUCCESS, CONSOLE_ERROR } from './config/consoleConfig';
 
 // Databases
 export { initDatabase } from './database/mongo';
-export { getUserByID, getBasicUserData, getDevicesByUserID } from './database/mongo/user';
-export { getDevicesByID, getDeviceData } from './database/mongo/device';
+export { getUserByID, getBasicUserData } from './database/mongo/user';
 
 // Functions
 export { loader } from './functions/loader';
