@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import initSocketIO from '../socket';
 import initRouter from './router';
 import { CONSOLE_SUCCESS, initDatabase, initPassport, initSessionStore } from '../utils';
+import { env } from 'process';
 
 const startServer = (mongoSession) => {
 		const express = expressJS(),
@@ -38,13 +39,16 @@ const startServer = (mongoSession) => {
 			res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 			res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
-			req.secure ? next() : res.redirect('https://' + req.headers.host + req.url);
+			if (env.SECURE) {
+				req.secure ? next() : res.redirect('https://' + req.headers.host + req.url);
+			}
 		});
 		initRouter(express);
 
-		server.listen(8080, () => {
+		server.listen(env.PORT || 8080, () => {
 			console.log(true, 'Starting Server');
-			console.log(CONSOLE_SUCCESS, 'Server is running at', chalk.green('https://' + (process.env.IP || ip.address() || 'localhost')));
+			console.log(CONSOLE_SUCCESS, 'Server is running at',
+				chalk.green('http://' + (env.IP || ip.address() || 'localhost') + ':' + (env.PORT || 8080)));
 		});
 	},
 
