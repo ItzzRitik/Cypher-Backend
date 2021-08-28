@@ -6,7 +6,7 @@ import { CONSOLE_SUCCESS, CONSOLE_ERROR, loader } from '../../';
 let loading,
 	mongoCall = 0;
 
-const dbOptions = { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true, poolSize: 10 },
+const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true },
 	connectMongoDB = (resolve, reject) => {
 		mongoose.connect(process.env.DATABASE_URL, dbOptions)
 			.then(() => {

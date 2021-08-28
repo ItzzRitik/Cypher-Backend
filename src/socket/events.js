@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import _ from 'lodash';
 
 import { endSession, isAuthenticated, getBasicUserData } from '../utils';
-import { connectApp } from '../manager/appManager';
 
 const setupSocketEvents = (io) => {
 	io.use((client, next) => {
@@ -19,8 +18,7 @@ const setupSocketEvents = (io) => {
 
 		if (app) {
 			const userID = socket?.request?.session?.passport?.user;
-
-			connectApp(socket, userID, app.id);
+			socket.join(app.id);
 
 			socket.on('getSession', async (done) => {
 				const user = await getBasicUserData(userID),
