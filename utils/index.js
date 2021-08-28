@@ -14,7 +14,7 @@ export { getSocketBySocketID, getAppIDBySocketID } from './functions/socket';
 
 // Passport
 export { initPassport } from './passport/passport';
-export { authCallback, endSession, isAuthenticated, joinJarvisRooms } from './passport/session';
+export { authCallback, endSession, isAuthenticated } from './passport/session';
 
 // Stores
 export { socket, isSocketInitialized, storeSocket } from './store/instanceStore';
