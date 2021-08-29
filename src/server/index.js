@@ -29,20 +29,19 @@ const startServer = (mongoSession) => {
 		express.enable('trust proxy');
 		express.use(cookieParser(process.env.COOKIE_SECRET));
 		express.use(session);
-
-		initPassport(express);
-		initSocketIO(server, session);
-
 		express.use((req, res, next) => {
 			res.header('Access-Control-Allow-Origin', req.headers.origin);
 			res.header('Access-Control-Allow-Credentials', true);
 			res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 			res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
-			if (env.SECURE) {
+			if (env.FORCE_HTTPS) {
 				req.secure ? next() : res.redirect('https://' + req.headers.host + req.url);
 			}
 		});
+
+		initPassport(express);
+		initSocketIO(server, session);
 		initRouter(express);
 
 		server.listen(env.PORT || 8080, () => {
