@@ -12,20 +12,20 @@ const dbOptions = { useNewUrlParser: true, useUnifiedTopology: true },
 			.then(() => {
 				clearInterval(loading);
 				console.stdout('\n');
-				process.stdout.moveCursor(0, -1);
+				console.moveCursor(0, -1);
 				console.log(CONSOLE_SUCCESS, chalk.green('Mongo Connection Established'));
 				return resolve(mongoose.connection.client);
 			})
 			.catch((error) => {
 				clearInterval(loading);
-				++mongoCall > 1 && process.stdout.moveCursor(0, -1);
+				++mongoCall > 1 && console.moveCursor(0, -1);
 
 				console.stdout('\r');
 				console.error(CONSOLE_ERROR, 'MongoDB Connection Failed: ', chalk.red(error),
 					chalk.red.dim((mongoCall > 1) ? '(' + mongoCall + ')' : ''));
 
 				if (mongoCall >= 1) {
-					process.stdout.moveCursor(0, -1);
+					console.moveCursor(0, -1);
 					console.stdout('\r\n');
 
 					console.log(true, 'Failed to connect database');

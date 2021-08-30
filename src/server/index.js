@@ -35,9 +35,7 @@ const startServer = (mongoSession) => {
 			res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 			res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 
-			if (env.FORCE_HTTPS) {
-				req.secure ? next() : res.redirect('https://' + req.headers.host + req.url);
-			}
+			(env.FORCE_HTTPS && !req.secure) ? res.redirect('https://' + req.headers.host + req.url) : next();
 		});
 
 		initPassport(express);

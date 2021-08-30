@@ -42,6 +42,9 @@ const getPrefix = (title) => {
 				args[0] = getPrefix(args[0]);
 				legacyConsole.trace(...args);
 			},
+			moveCursor: (...args) => {
+				process?.stdout?.moveCursor && process.stdout.moveCursor(...args);
+			},
 			stdout: (...args) => {
 				process.stdout.write(...args);
 			},

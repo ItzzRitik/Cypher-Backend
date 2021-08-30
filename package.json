@@ -5,8 +5,8 @@
 	"main": "cypher.js",
 	"scripts": {
 		"start": "npm run prod",
-		"dev": "set NODE_ENV=dev && npm-run-all build devServer",
-		"prod": "set NODE_ENV=prod && npm-run-all build prodServer",
+		"dev": "npm-run-all build devServer",
+		"prod": "npm-run-all build prodServer",
 		"watch": "nodemon",
 
 		"prodServer": "node .dist/cypher",
@@ -19,14 +19,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ItzzRitik/Cypher.git"
+		"url": "git+https://github.com/ItzzRitik/Cypher-Backend.git"
 	},
 	"author": "Ritik Srivastava",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/ItzzRitik/Cypher/issues"
+		"url": "https://github.com/ItzzRitik/Cypher-Backend/issues"
 	},
-	"homepage": "https://github.com/ItzzRitik/Cypher#readme",
+	"homepage": "https://github.com/ItzzRitik/Cypher-Backend#readme",
 	"dependencies": {
 		"@babel/cli": "^7.14.8",
 		"@babel/core": "^7.15.0",

@@ -1,7 +1,7 @@
 require('dotenv').config();
+import { env } from 'process';
 
-let env = process.env,
-	AUTH_PROVIDERS = {
+let AUTH_PROVIDERS = {
 		google: ['profile', 'email', 'https://www.googleapis.com/auth/user.birthday.read', 'https://www.googleapis.com/auth/user.gender.read'],
 		github: ['read:user'],
 		facebook: ['email'],

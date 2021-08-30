@@ -29,7 +29,7 @@ const setupSocketIO = (server, session) => {
 		storeSocket(socket);
 		setupSocketEvents(socket);
 
-		process.stdout.moveCursor(0, -1);
+		console.moveCursor(0, -1);
 		console.log(CONSOLE_SUCCESS, chalk.green('SocketIO Service Established'));
 
 		return socket;
